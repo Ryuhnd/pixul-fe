@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
+
 type LinkItemType = "logo" | "button" | "standard";
 
 interface LinkItemProps {
@@ -10,9 +12,9 @@ const { href, type = "button" } = defineProps<LinkItemProps>();
 </script>
 
 <template>
-  <a :href="href" class="link" :class="type">
+  <RouterLink :to="href" class="link" :class="type">
     <slot></slot>
-  </a>
+  </RouterLink>
 </template>
 
 <style scoped lang="scss">
@@ -21,27 +23,32 @@ const { href, type = "button" } = defineProps<LinkItemProps>();
   color: white;
   transition: 0.4s;
 
+  &.router-link-active {
+    background: #424242;
+  }
+
   &.logo {
-    height: 100%;
+    display: flex;
+
     :slotted(img) {
-      height: 100%;
+      height: var(--logo-height, 32px);
     }
   }
 
   &.button {
     border: 1px solid grey;
     border-radius: 0.35rem;
-    padding: 0.25rem;
+    padding: 0.25rem 0.4rem;
   }
 }
 
 @media (hover: hover) {
   .link:hover {
-    opacity: 0.5;
+    opacity: 0.8;
 
     &.button {
       opacity: 1;
-      background: #424242;
+      background: #313131;
     }
   }
 }

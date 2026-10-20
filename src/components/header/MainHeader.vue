@@ -10,8 +10,10 @@ import NavigationBar from "@/components/navigation/NavigationBar.vue";
 
 <style scoped lang="scss">
 header {
-  padding: 1rem;
   height: 65px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
   position: sticky;
   top: 0;
   background-color: #222222;
